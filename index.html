@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdelrahman Oraby – AI & Robotics Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080810;--surface:#0f0f1a;--card:#141420;
+  --border:rgba(120,120,255,0.1);--accent:#5fffb0;--accent2:#7b6fff;
+  --text:#eeeef5;--muted:#7070a0;--mono:'Space Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(95,255,176,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(95,255,176,0.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 5vw;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);background:rgba(8,8,16,0.75)}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.08em}
+.nav-links{display:flex;gap:1.8rem}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+section{position:relative;z-index:1}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8rem 5vw 4rem;overflow:hidden}
+.hero-glow{position:absolute;top:15%;left:30%;width:700px;height:700px;background:radial-gradient(circle,rgba(123,111,255,.1) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:10%;left:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(95,255,176,.06) 0%,transparent 65%);pointer-events:none}
+.hero-tag{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em;margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .1s forwards}
+h1.hero-name{font-size:clamp(3rem,7.5vw,7rem);font-weight:600;line-height:1.0;letter-spacing:-.03em;margin-bottom:.6rem;opacity:0;animation:fadeUp .7s .25s forwards}
+h1.hero-name span{color:var(--accent)}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.25rem);color:var(--muted);font-weight:300;margin-bottom:2.5rem;max-width:480px;opacity:0;animation:fadeUp .7s .4s forwards}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .55s forwards}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:.7rem 1.6rem;font-size:13px;font-weight:500;border-radius:3px;text-decoration:none;transition:all .2s;cursor:pointer;font-family:var(--sans)}
+.btn-primary{background:var(--accent);color:#080810}
+.btn-primary:hover{background:#3de09a;transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);transform:translateY(-2px)}
+
+/* PHOTO */
+.hero-photo-wrap{
+  position:absolute;right:6vw;top:50%;transform:translateY(-50%);
+  opacity:0;animation:fadeIn 1s .7s forwards;
+  width:clamp(220px,22vw,320px);
+}
+.hero-photo-frame{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(95,255,176,.1);
+}
+.hero-photo-frame::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(8,8,16,.5) 100%);
+  pointer-events:none;
+}
+.hero-photo{
+  width:100%;
+  display:block;
+  /* Show face — selfie taken from below so face is upper portion */
+  object-fit:cover;
+  object-position:center 10%;
+  aspect-ratio:3/4;
+  filter:brightness(1.03) contrast(1.03);
+}
+.hero-photo-accent{
+  position:absolute;
+  inset:-1px;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(95,255,176,.15),transparent 50%,rgba(123,111,255,.1));
+  pointer-events:none;
+}
+
+/* ABOUT */
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--accent);margin-bottom:1.8rem}
+#about{padding:7rem 5vw;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;border-top:1px solid var(--border)}
+.about-text h2{font-size:2.1rem;font-weight:600;margin-bottom:1.2rem}
+.about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:.95rem}
+.stats{display:flex;gap:2.5rem;margin-top:2rem}
+.stat-val{font-size:2rem;font-weight:600;color:var(--accent)}
+.stat-lbl{font-size:12px;color:var(--muted);margin-top:2px}
+.skills-grid{display:flex;flex-direction:column;gap:1.1rem}
+.skill-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px}
+.skill-label span:last-child{color:var(--accent);font-family:var(--mono);font-size:11px}
+.skill-bar{height:1px;background:var(--border);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:var(--accent);border-radius:2px;width:0;transition:width 1.3s cubic-bezier(.16,1,.3,1)}
+
+/* PROJECTS */
+#projects{padding:7rem 5vw;border-top:1px solid var(--border)}
+#projects h2{font-size:2.1rem;font-weight:600;margin-bottom:3rem}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1.6rem;transition:transform .25s,border-color .25s}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(95,255,176,.18)}
+.project-icon{width:36px;height:36px;border-radius:6px;background:rgba(95,255,176,.07);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-size:18px}
+.project-card h3{font-size:.95rem;font-weight:500;margin-bottom:.5rem;color:var(--text)}
+.project-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.project-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.1rem}
+.tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:2px;background:rgba(95,255,176,.05);color:var(--accent);border:1px solid rgba(95,255,176,.12)}
+.gh-link{display:inline-flex;align-items:center;gap:5px;margin-top:1rem;font-family:var(--mono);font-size:11px;color:var(--accent2);text-decoration:none;transition:color .2s}
+.gh-link:hover{color:var(--accent)}
+
+/* EXPERIENCE */
+#experience{padding:7rem 5vw;border-top:1px solid var(--border)}
+#experience h2{font-size:2.1rem;font-weight:600;margin-bottom:3rem}
+.timeline{display:flex;flex-direction:column}
+.tl-item{display:grid;grid-template-columns:170px 1px 1fr;gap:0 2rem;padding-bottom:2.5rem}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;padding-top:4px}
+.tl-line{position:relative;background:var(--border);width:1px}
+.tl-line::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.tl-content h3{font-size:.95rem;font-weight:500;margin-bottom:3px}
+.tl-org{font-size:12px;color:var(--accent);margin-bottom:7px;font-family:var(--mono)}
+.tl-content p{font-size:13px;color:var(--muted)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin-top:1.5rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1.1rem 1.25rem}
+.cert-org{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:5px}
+.cert-name{font-weight:500;font-size:.9rem}
+.cert-hours{color:var(--muted);font-size:12px;margin-top:3px}
+
+/* CONTACT */
+#contact{padding:7rem 5vw;border-top:1px solid var(--border);text-align:center}
+#contact h2{font-size:2.3rem;font-weight:600;margin-bottom:1rem}
+#contact p{color:var(--muted);max-width:460px;margin:0 auto 2.5rem;font-size:.95rem}
+.contact-links{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+footer{padding:2rem 5vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-family:var(--mono)}
+footer span{color:var(--accent)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.revealed{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #about{grid-template-columns:1fr;gap:3rem}
+  .hero-photo-wrap{display:none}
+}
+@media(max-width:600px){
+  .tl-item{grid-template-columns:1fr;gap:.4rem}
+  .tl-date{text-align:left}
+  .tl-line{display:none}
+  .projects-grid{grid-template-columns:1fr}
+  .nav-links{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AO.portfolio</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-tag">// AI &amp; Data Management · Badr University in Assiut</div>
+  <h1 class="hero-name">Abdelrahman<br><span>Oraby</span></h1>
+  <p class="hero-sub">Building intelligent systems at the intersection of machine learning, robotics, and embedded engineering.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+    <a href="https://github.com/AbdoOraby21" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/abdelrahman-oraby-92588a2a5/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+  </div>
+
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame">
+      <img class="hero-photo" src="./photo.jpg" alt="Abdelrahman Oraby">
+      <div class="hero-photo-accent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text reveal">
+    <div class="section-label">// about me</div>
+    <h2>Who I Am</h2>
+    <p>I'm a 3rd-year Artificial Intelligence and Data Management student at Badr University in Assiut, Egypt. I'm passionate about building real-world AI and robotics solutions — from autonomous robots to computer vision pipelines.</p>
+    <p>Outside academics, I lead public relations for the IEEE Student Branch and help organize international entrepreneurship competitions through Hult Prize.</p>
+    <div class="stats">
+      <div><div class="stat-val">7+</div><div class="stat-lbl">Projects Built</div></div>
+      <div><div class="stat-val">210+</div><div class="stat-lbl">Training Hours</div></div>
+      <div><div class="stat-val">2</div><div class="stat-lbl">Leadership Roles</div></div>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="section-label">// technical skills</div>
+    <div class="skills-grid">
+      <div><div class="skill-label"><span>Python (AI / ML)</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+      <div><div class="skill-label"><span>OpenCV / Computer Vision</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div></div>
+      <div><div class="skill-label"><span>Arduino / Embedded / IoT</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div>
+      <div><div class="skill-label"><span>Neural Networks / Deep Learning</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
+      <div><div class="skill-label"><span>C++</span><span>65%</span></div><div class="skill-bar"><div class="skill-fill" data-w="65"></div></div></div>
+      <div><div class="skill-label"><span>Flutter / Dart</span><span>60%</span></div><div class="skill-bar"><div class="skill-fill" data-w="60"></div></div></div>
+      <div><div class="skill-label"><span>Big Data Processing</span><span>65%</span></div><div class="skill-bar"><div class="skill-fill" data-w="65"></div></div></div>
+      <div><div class="skill-label"><span>Git / GitHub</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">// projects</div>
+  <h2 class="reveal">What I've Built</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-icon">🧠</div>
+      <h3>MLP Heart Disease Classifier</h3>
+      <p>Multi-layer perceptron for binary heart disease prediction. Full ML pipeline with preprocessing, training, and evaluation metrics.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">Neural Networks</span><span class="tag">Scikit-learn</span></div>
+      <a href="https://github.com/AbdoOraby21/MLP-heart-disease-classification-project" target="_blank" class="gh-link">↗ View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">✍️</div>
+      <h3>MNIST MLP Classifier</h3>
+      <p>Handwritten digit recognition using a custom-built MLP on the MNIST dataset. Implemented from scratch to understand deep learning fundamentals.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">MLP</span><span class="tag">MNIST</span><span class="tag">NumPy</span></div>
+      <a href="https://github.com/AbdoOraby21/Neural-Networks-Project---MNIST-MLP" target="_blank" class="gh-link">↗ View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">🦾</div>
+      <h3>Robotic Arm Control System</h3>
+      <p>Multi-DoF robotic arm with precise object manipulation. Synchronized servo motor control logic for smooth and accurate positioning.</p>
+      <div class="project-tags"><span class="tag">Arduino</span><span class="tag">C++</span><span class="tag">Servo Control</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">🪪</div>
+      <h3>Student ID Image Processing</h3>
+      <p>Automated pipeline using OpenCV for face detection and ID photo alignment with student database integration.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">CV2</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">🚗</div>
+      <h3>Autonomous Obstacle-Avoiding Car</h3>
+      <p>Robotic car using Arduino and ultrasonic sensors for real-time obstacle detection and autonomous navigation.</p>
+      <div class="project-tags"><span class="tag">Arduino</span><span class="tag">Ultrasonic</span><span class="tag">Motor Control</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">📍</div>
+      <h3>Line Following Robot</h3>
+      <p>High-precision robot using IR sensors for accurate track following through real-time motor adjustments.</p>
+      <div class="project-tags"><span class="tag">Arduino</span><span class="tag">IR Sensors</span><span class="tag">C++</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">🤖</div>
+      <h3>AI Chatbot System</h3>
+      <p>Logic-based AI chatbot built to handle and process user queries efficiently using applied AI reasoning.</p>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">AI Logic</span><span class="tag">NLP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">// experience &amp; education</div>
+  <h2 class="reveal">Timeline</h2>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-date">2024 – Present</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <h3>Head of PR Committee</h3>
+        <div class="tl-org">IEEE Student Branch – Badr University</div>
+        <p>Leading public relations, managing branch communications and professional networking.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2024</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <h3>Vice Organizing Committee</h3>
+        <div class="tl-org">Hult Prize – Badr University in Assiut</div>
+        <p>Coordinated event logistics and student teams for the international entrepreneurship competition.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2023</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <h3>Data Entry Specialist</h3>
+        <div class="tl-org">Work Experience</div>
+        <p>Organized and maintained data quality and consistency in digital systems.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">2022 – Present</div>
+      <div class="tl-line"></div>
+      <div class="tl-content">
+        <h3>B.Sc. Artificial Intelligence &amp; Data Management</h3>
+        <div class="tl-org">Badr University in Assiut (BUA) · 3rd Year</div>
+        <p>Core coursework: machine learning, embedded systems, computer vision, algorithms, data management.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem" class="reveal">
+    <div class="section-label">// certifications &amp; training</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-org">Egyptian Petroleum</div>
+        <div class="cert-name">Big Data Training</div>
+        <div class="cert-hours">80 Hours</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">ITIDA</div>
+        <div class="cert-name">IoT Course</div>
+        <div class="cert-hours">40 Hours</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">ITI</div>
+        <div class="cert-name">Flutter Mobile Development</div>
+        <div class="cert-hours">30 Hours</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-org">Cisco Skills</div>
+        <div class="cert-name">Python for AI</div>
+        <div class="cert-hours">60 Hours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal" style="display:inline-block">// get in touch</div>
+  <h2 class="reveal">Let's Connect</h2>
+  <p class="reveal">Open to internship and entry-level opportunities in AI, robotics, embedded systems, and data engineering.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:orabyabdo21@gmail.com" class="btn btn-primary">orabyabdo21@gmail.com</a>
+    <a href="https://github.com/AbdoOraby21" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/abdelrahman-oraby-92588a2a5/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    <a href="tel:+201013808992" class="btn btn-ghost">+20 101 380 8992</a>
+  </div>
+</section>
+
+<footer>
+  <span>Abdelrahman Oraby</span>
+  <div>Abnoub, Assiut, Egypt · 2025</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('revealed')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const fillObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('.skill-fill').forEach(b=>{b.style.width=b.dataset.w+'%'})})},{threshold:.2});
+document.querySelectorAll('#about').forEach(el=>fillObs.observe(el));
+</script>
+</body>
+</html>
