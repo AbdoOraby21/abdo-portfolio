@@ -133,17 +133,102 @@ footer span{color:var(--accent)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
 .revealed{opacity:1;transform:none}
 
-/* RESPONSIVE */
+/* RESPONSIVE — TABLET */
 @media(max-width:900px){
   #about{grid-template-columns:1fr;gap:3rem}
   .hero-photo-wrap{display:none}
+  #hero{padding:7rem 6vw 4rem}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
 }
+
+/* RESPONSIVE — MOBILE */
 @media(max-width:600px){
-  .tl-item{grid-template-columns:1fr;gap:.4rem}
-  .tl-date{text-align:left}
+  /* Nav */
+  nav{padding:.9rem 5vw}
+  .nav-logo{font-size:12px}
+  .nav-links{gap:.9rem}
+  .nav-links a{font-size:11px;letter-spacing:0}
+
+  /* Hero */
+  #hero{
+    min-height:100svh;
+    padding:6rem 5vw 3rem;
+    justify-content:flex-end;
+    padding-bottom:3.5rem;
+  }
+  .hero-tag{font-size:9px;letter-spacing:.08em;margin-bottom:1rem}
+  h1.hero-name{
+    font-size:clamp(2.6rem,13vw,4rem);
+    letter-spacing:-.02em;
+    margin-bottom:.5rem;
+  }
+  .hero-sub{
+    font-size:.88rem;
+    max-width:100%;
+    margin-bottom:1.8rem;
+    line-height:1.65;
+  }
+  .hero-cta{gap:.7rem}
+  .btn{padding:.65rem 1.2rem;font-size:12px}
+
+  /* About */
+  #about{padding:4rem 5vw;gap:2.5rem}
+  .about-text h2{font-size:1.7rem}
+  .about-text p{font-size:.9rem}
+  .stats{gap:1.5rem}
+  .stat-val{font-size:1.6rem}
+  .stat-lbl{font-size:11px}
+  .skill-label{font-size:12px}
+
+  /* Projects */
+  #projects{padding:4rem 5vw}
+  #projects h2{font-size:1.7rem;margin-bottom:2rem}
+  .projects-grid{grid-template-columns:1fr;gap:1rem}
+  .project-card{padding:1.3rem}
+  .project-card h3{font-size:.9rem}
+  .project-card p{font-size:12px}
+
+  /* Experience */
+  #experience{padding:4rem 5vw}
+  #experience h2{font-size:1.7rem;margin-bottom:2rem}
+  .tl-item{
+    display:flex;flex-direction:column;
+    gap:.3rem;padding-bottom:2rem;
+    padding-left:1rem;
+    border-left:1px solid var(--border);
+    position:relative;
+  }
+  .tl-item::before{
+    content:'';
+    position:absolute;left:-4px;top:4px;
+    width:7px;height:7px;
+    border-radius:50%;background:var(--accent);
+  }
+  .tl-date{
+    font-family:var(--mono);font-size:10px;
+    color:var(--accent);text-align:left;
+    opacity:.7;
+  }
   .tl-line{display:none}
-  .projects-grid{grid-template-columns:1fr}
-  .nav-links{gap:1rem}
+  .tl-content h3{font-size:.9rem}
+  .tl-org{font-size:11px}
+  .tl-content p{font-size:12px}
+  .certs-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .cert-card{padding:.9rem 1rem}
+  .cert-name{font-size:.85rem}
+
+  /* Contact */
+  #contact{padding:4rem 5vw}
+  #contact h2{font-size:1.8rem}
+  #contact p{font-size:.9rem}
+  .contact-links{flex-direction:column;align-items:stretch}
+  .contact-links .btn{justify-content:center;text-align:center}
+
+  /* Footer */
+  footer{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 5vw}
+
+  /* Section labels */
+  .section-label{font-size:9px;letter-spacing:.14em;margin-bottom:1.2rem}
 }
 </style>
 </head>
@@ -345,7 +430,7 @@ footer span{color:var(--accent)}
 
 <footer>
   <span>Abdelrahman Oraby</span>
-  <div>Abnoub, Assiut, Egypt · 2025</div>
+  <div>Abnoub, Assiut, Egypt · 2026</div>
 </footer>
 
 <script>
